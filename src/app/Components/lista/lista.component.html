@@ -1,0 +1,14 @@
+<h2 class="text-center">Lista de empleados</h2>
+<ol class="list-group list-group-numbered w-50 mx-auto lista">
+        <li *ngFor="let em of empleados; let i=index" class="list-group-item d-flex position-relative justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">{{em.nombre}} {{em.apellido}}</div>
+          <span class="cargo">{{em.cargo}}</span>
+        </div>
+        <div class="d-flex position-absolute bottom-0 end-0 me-1 mb-1 mybtn">
+            <button class="btn btn-warning btn-sm" [routerLink]="['actualiza',i]">Modificar</button>
+            <button class="btn btn-danger btn-sm ms-1" (click)="eliminar(i)" >Eliminar</button>
+        </div>
+        <span class="badge bg-primary rounded-pill">{{em.sueldo}}</span>
+        </li>
+</ol>

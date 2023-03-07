@@ -1,0 +1,34 @@
+.lista li{
+    overflow: hidden;
+    background: rgba(222, 220, 219,0.1);
+    /* color: rgba(1, 1, 1,0.3); */
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+h2{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+} 
+.lista li:hover{
+    background: none;
+}
+.lista li:hover span{
+    text-shadow: 1px 1px 5px black;
+}
+.lista li div div{
+    font-weight: bold;
+    font-size: 1.3em;
+    letter-spacing: 1px;
+    color: rgba(244, 244, 244,0.9);
+    text-shadow: 1px 1px 3px black;
+}
+.cargo,h2{
+    color: cadetblue;
+    text-shadow: 1px 1px 2px black;
+}
+
+.mybtn{
+    right: -45% !important;
+    transition: right 0.8s;
+}
+.lista li:hover .mybtn{
+    right: 0% !important;
+}
