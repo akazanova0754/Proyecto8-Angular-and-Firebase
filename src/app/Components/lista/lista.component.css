@@ -1,6 +1,11 @@
+.lista{
+    align-items: center;
+}
 .lista li{
+    min-width: 280px;
     overflow: hidden;
     background: rgba(222, 220, 219,0.1);
+    position: relative;
     /* color: rgba(1, 1, 1,0.3); */
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
@@ -26,9 +31,13 @@ h2{
 }
 
 .mybtn{
-    right: -45% !important;
-    transition: right 0.8s;
+    position: absolute;
+    bottom:0;
+    right:-200px !important;
+    transition: all 0.8s;
 }
 .lista li:hover .mybtn{
+    /* right: 0% !important; */
+    /* :0%; */
     right: 0% !important;
 }

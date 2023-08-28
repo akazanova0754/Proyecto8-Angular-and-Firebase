@@ -1,20 +1,49 @@
-<form class="bg- w-50 text-center mx-auto pt-4 px-4 pb-3 bg-myform rounded letter-form">
+<form #agregarEmp="ngForm" (ngSubmit)="addEmp()" class="bg- w-50 text-center mx-auto pt-4 px-4 pb-3 bg-myform rounded letter-form">
+    
     <legend class="mx-auto w-100 mb-3 h3 myform-color">Agregar empleados</legend>
     <label class="input-group my-2 " for="nombre">
         <span class="input-group-text ">Nombre:</span>
-        <input [(ngModel)]="nombre" class="form-control" type="text" placeholder="Nombre" name="nombre">
+        <input [(ngModel)]="nombre" required class="form-control" [maxlength]="15" type="text" placeholder="Nombre" name="nombre">
     </label>
+    <div *ngIf="verificarSiCamposValidos('nombre')" class="text-danger">El campo es incorrecto</div>
     <label class="input-group my-2 " for="apellido">
         <span class="input-group-text ">Apellido:</span>
-        <input [(ngModel)]="apellido" class="form-control" type="text" placeholder="Apellido" name="apellido">
+        <input [(ngModel)]="apellido" class="form-control" [maxlength]="20" type="text" placeholder="Apellido" name="apellido" required>
     </label>
+    <div *ngIf="verificarSiCamposValidos('apellido')" class="text-danger">El campo es incorrecto</div>
     <label class="input-group my-2 " for="cargo">
         <span class="input-group-text ">Cargo:</span>
-        <input [(ngModel)]="cargo" class="form-control" type="text" placeholder="Cargo" name="cargo">
+        <input [(ngModel)]="cargo" class="form-control" [maxlength]="20" type="text" placeholder="Cargo" name="cargo" required>
     </label>
+    <div *ngIf="verificarSiCamposValidos('cargo')" class="text-danger">El campo es incorrecto</div>
     <label class="input-group my-2 " for="sueldo">
         <span class="input-group-text ">Sueldo:</span>
-        <input [(ngModel)]="sueldo" class="form-control" type="number" value="" placeholder="Sueldo" name="sueldo">
+        <input [(ngModel)]="sueldo" class="form-control" [max]="99999999" (input)="maxDigitsValidator($event)" type="number" value="" placeholder="Sueldo" name="sueldo" required>
     </label>
-        <button (click)="addEmp()" class="btn btn-dark mt-3">Agregar Empleado</button>
+    <div *ngIf="verificarSiCamposValidos('sueldo')" class="text-danger">El campo es incorrecto</div>
+    <button  type="submit" class="btn btn-dark mt-3">Agregar Empleado</button>
 </form>
+
+
+<!-- Button trigger modal -->
+<button type="button" #abrirMod class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+</button>
+  
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Advertencia</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            {{mensaje}}
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+</div>

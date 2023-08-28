@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { count } from 'rxjs';
 import { Empleado } from 'src/app/Models/empleado.model';
@@ -13,6 +14,8 @@ import { DataServiceService } from 'src/app/Service/data-service.service';
 export class ActualizaComponent implements OnInit{
   id:number;
   empleado:Empleado|null=null;
+  @ViewChild('actualizaEmp') form!: NgForm;
+  enable:boolean=false;
 
   nombre:string='';
   apellido:string='';
@@ -32,6 +35,7 @@ export class ActualizaComponent implements OnInit{
           this.cargo=this.empleado!.cargo;
           this.sueldo=this.empleado!.sueldo;
         }else{
+          this.enable=true;
           this.nombre='';
           this.apellido='';
           this.cargo='';
@@ -42,7 +46,7 @@ export class ActualizaComponent implements OnInit{
     );
   }
   actualizar(){
-    if(this.empleado!=null){
+    if(this.empleado!=null && this.form.valid){
       if(Object.entries(this.empleado).length == (Object.entries(new Empleado('','','',0)).length - 1)){
         this.serviceData.updateEmpleado(new Empleado(this.nombre,this.apellido,this.cargo,this.sueldo) , this.id);
       }

@@ -1,21 +1,21 @@
-<form class="modificar-form bg- w-50 text-center mx-auto pt-4 px-4 pb-3 bg-myform rounded letter-form">
+<form #actualizaEmp="ngForm" (ngSubmit)="actualizar()" class="modificar-form bg- w-50 text-center mx-auto pt-4 px-4 pb-3 bg-myform rounded letter-form">
     <legend class="mx-auto w-100 mb-3 h3 myform-color">Modificar empleado</legend>
     <label class="input-group my-2 " for="nombre">
         <span class="input-group-text ">Nombre:</span>
-        <input class="form-control" [(ngModel)]="nombre" type="text" placeholder="Nombre" name="nombre">
+        <input class="form-control" [(ngModel)]="nombre" required [maxlength]="25" type="text" placeholder="Nombre" name="nombre">
     </label>
     <label class="input-group my-2 " for="apellido">
         <span class="input-group-text ">Apellido:</span>
-        <input class="form-control" [(ngModel)]="apellido" type="text" placeholder="Apellido" name="apellido">
+        <input class="form-control" [(ngModel)]="apellido" required [maxlength]="35" type="text" placeholder="Apellido" name="apellido">
     </label>
     <label class="input-group my-2 " for="cargo">
         <span class="input-group-text ">Cargo:</span>
-        <input class="form-control" [(ngModel)]="cargo" type="text"  placeholder="Cargo" name="cargo">
+        <input class="form-control" [(ngModel)]="cargo" required [maxlength]="25" type="text"  placeholder="Cargo" name="cargo">
     </label>
     <label class="input-group my-2 " for="sueldo">
         <span class="input-group-text ">Sueldo:</span>
-        <input  class="form-control" [(ngModel)]="sueldo" type="number"  placeholder="Sueldo" name="sueldo">
+        <input  class="form-control" [(ngModel)]="sueldo" required [max]="1000000" type="number"  placeholder="Sueldo" name="sueldo">
     </label>
-        <button (click)="actualizar()" class="btn btn-dark mt-3">Actualizar</button>
+        <button *ngIf="!enable" type="submit" class="btn btn-dark mt-3">Actualizar</button>
         <button [routerLink]="['']"  class="ms-1 btn btn-dark mt-3">Regresar</button>
 </form>

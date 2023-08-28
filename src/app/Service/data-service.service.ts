@@ -43,9 +43,14 @@ export class DataServiceService{
   }
   addEmpleado(emp:Empleado){
     console.log(emp);
-    this.empleados.push(emp);
-    console.log(this.empleados);
-    this.firestore.object(this.dbpath).set(this.empleados);
+    if(this.empleados.length < 5){
+      this.empleados.push(emp);
+      console.log(this.empleados);
+      this.firestore.object(this.dbpath).set(this.empleados);
+      return true
+    }else{
+      return false;
+    }
   }
   updateEmpleado(empleado:Empleado,id:number){
     this.firestore.object(this.dbpath+'/'+id).update(empleado);
